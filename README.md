@@ -4,6 +4,9 @@ REST API (Express + TypeScript) for working with LLMs through the gptunnel proxy
 `POST /chat` supports normal (JSON) and streaming (SSE) responses, routes to the
 right provider by `model`, and logs token usage and cost for every request.
 
+Важно. В проекте не обеспечивается идемпотентность /chat. Еcли отправить повторно один и тот же запрос, API LLM вызовется два раза.
+Это можно исправить при помощи Idempotency-Key, который мы бы сохраняли в Redis, но тогда возникают отдельные сложности со стримами. Это отдельная задача.
+
 ## Setup
 
 ```bash
